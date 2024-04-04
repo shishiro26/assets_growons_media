@@ -24,7 +24,29 @@ const NavItems = async () => {
               href={`/money/record/${session?.user?.id}`}
               className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 "
             >
-              <span className="flex-1 ms-3 whitespace-nowrap">Wallet</span>
+              <span className="flex-1 ms-3 whitespace-nowrap">
+                Deposit Money
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={`/orders/${session?.user.id}`}
+              className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100"
+            >
+              <span className="flex-1 ms-3 whitespace-nowrap">
+                Place new order
+              </span>
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={`/orders/records/${session?.user.id}`}
+              className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100"
+            >
+              <span className="flex-1 ms-3 whitespace-nowrap">
+                Order status
+              </span>
             </Link>
           </li>
           <li>
@@ -34,9 +56,6 @@ const NavItems = async () => {
             >
               <span className="flex-1 ms-3 whitespace-nowrap">Wallet flow</span>
             </Link>
-          </li>
-          <li>
-            <SidebarItems userId={session?.user.id?.toString() ?? ""} />
           </li>
           <li>
             <Link

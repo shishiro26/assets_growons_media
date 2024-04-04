@@ -18,11 +18,13 @@ import { FormError } from "@/components/shared/form-error";
 import CardWrapper from "./card-wrapper";
 import { FormSuccess } from "@/components/shared/form-success";
 import { register } from "@/actions/register";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
     resolver: zodResolver(RegisterSchema),
@@ -42,6 +44,11 @@ const RegisterForm = () => {
       register(values).then((data) => {
         setError(data?.error);
         setSuccess(data?.success);
+        if (data?.success) {
+          setTimeout(() => {
+            router.push("/auth/login");
+          }, 1500);
+        }
       });
     });
   }
